@@ -1,15 +1,27 @@
 import React from 'react'
 import { useState , useEffect} from 'react'
+import axios from "axios";
+import EmptyState from './EmptyState';
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
   const [users, setUsers] = useState([]);
+
+  const getUsers = async () => {
+    try {
+      const res = await axios.get(`http://localhost:8080/api/users`,{withCredentials: true});
+      const data = await res.data;
+      setUsers(data);
+    } catch (err) {
+      console.error(err.response.data);
+      navigate("/login");
+    }
+  }
+
   useEffect(() => {
-    // Fetch users from the API
-    fetch('http://localhost:8080/api/users')
-      .then((response) => response.json())
-      .then((data) => setUsers(data))
-      .catch((error) => console.error('Error fetching users:', error));
-  }, []);
+   getUsers();
+   }, []);
 
   const tableStyle = {
     width: '100%',
@@ -36,8 +48,16 @@ function Home() {
       <h1 >Home Page</h1>
       <br />
     <h2>welcome</h2>
+    {users.length <= 0 ? (
+        <EmptyState />
+      ) : (
+        <div>
+    <h3>
+
+            There are {users.length} users registered to this website! 
+          </h3>
     <br />
-    <h1>User List</h1>
+    <h4>User List</h4>
       <table style={tableStyle}>
         <thead>
           <tr>
@@ -54,6 +74,8 @@ function Home() {
           ))}
         </tbody>
       </table>
+      </div>
+       )}
     </div>
   )
 }

@@ -1,39 +1,30 @@
 import React from 'react'
-import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
-
 function Register() {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-          firstName: '',
-          username: '',
-          password: '',
-        });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({...formData, [name]: value, });
-    };
-      
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const navigate = useNavigate();  
+  const addUser = async (e) => {
     try {
-      const res=  await axios.post('http://localhost:8080/api/users/add', formData); 
-      const data = await res.data;
-      console.log(formData);    
-      setFormData({ firstName: '', username: '', password: '',  });
-      console.log(formData);   
-      navigate('/login');
+      e.preventDefault();
+      const formData = new FormData(e.currentTarget);
+      const data= Object.fromEntries(formData);
+      const res=  await axios.post('http://localhost:8080/api/users', data); 
+      if(res.status === 201){
+        alert('Registration Successful');
+        navigate('/login');
+      }
+      else{
+        alert('Registration Failed');
+      } 
     } catch (err) {
       console.log(err);
       alert('Error:'+ err);
     }   
  }
-      
   return (
     <form
-    onSubmit={handleSubmit}
+    onSubmit={addUser}
     style={{
       maxWidth: '400px',
       margin: 'auto',
@@ -49,8 +40,6 @@ function Register() {
         type="text"
         name="firstName"
         maxLength={12}
-        value={formData.firstName}
-        onChange={handleChange}
         required
         style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
       />
@@ -63,8 +52,6 @@ function Register() {
         name="username"
         maxLength={12}
         pattern="[a-zA-Z0-9]+"
-        value={formData.username}
-        onChange={handleChange}
         required
         style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
       />
@@ -76,8 +63,6 @@ function Register() {
         type="password"
         name="password"
         maxLength={24}
-        value={formData.password}
-        onChange={handleChange}
         required
         style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
       />
