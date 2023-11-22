@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-
+import "../css/register.css";
 function Register() {
   const navigate = useNavigate();  
   const addUser = async (e) => {
@@ -23,64 +23,20 @@ function Register() {
     }   
  }
   return (
-    <form
-    onSubmit={addUser}
-    style={{
-      maxWidth: '400px',
-      margin: 'auto',
-      padding: '20px',
-      border: '1px solid #ccc',
-      borderRadius: '5px',
-      textAlign: 'left',
-    }}
-  >
-    <label style={{ display: 'block', marginBottom: '10px' }}>
-      First Name:
-      <input
-        type="text"
-        name="firstName"
-        maxLength={12}
-        required
-        style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
-      />
+    <form onSubmit={addUser}>
+    <label>First Name:
+      <input type="text" name="firstName" maxLength={12} required/>
     </label>
     <br />
-    <label style={{ display: 'block', marginBottom: '10px' }}>
-      Username:
-      <input
-        type="text"
-        name="username"
-        maxLength={12}
-        pattern="[a-zA-Z0-9]+"
-        required
-        style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
-      />
+    <label>Username:
+      <input type="text" name="username" maxLength={12} pattern="[a-zA-Z0-9]+" required/>
     </label>
     <br />
-    <label style={{ display: 'block', marginBottom: '10px' }}>
-      Password:
-      <input
-        type="password"
-        name="password"
-        maxLength={24}
-        required
-        style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
-      />
+    <label> Password:
+      <input type="password" name="password" maxLength={24} required/>
     </label>
     <br />
-    <button
-      type="submit"
-      style={{
-        backgroundColor: '#4CAF50',
-        color: 'white',
-        padding: '10px 15px',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer',
-      }}
-    >
-      Register
-    </button>
+    <button type="submit">Register</button>
   </form>
   )
 }

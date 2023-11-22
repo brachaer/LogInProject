@@ -1,0 +1,45 @@
+div {
+    text-align: center;
+    margin-top: 50px;
+  }
+  form {
+    max-width: 300px;
+    margin: auto;
+    justify-content: center;
+    font-size: larger;
+    margin: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+  }
+  input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    background: #e0dede;
+    justify-content: center;
+    margin: 10px auto;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+  }
+  button {
+     width: 60%;
+  height: 40px;
+  margin: 10px auto;
+  justify-content: center;
+  display: block;
+  color: #fff;
+  background: #573b8a;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
+button:hover {
+  background: #6d44b8;
+}

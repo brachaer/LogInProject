@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import "../css/login.css";
 
 function Login() {
   const navigate = useNavigate();
@@ -25,44 +26,20 @@ function Login() {
       alert('Error:'+ error);   
     }
   };
-  const styles = {
-  container: {
-    textAlign: 'center',
-    marginTop: '50px',
-  },
-  form: {
-    maxWidth: '300px',
-    margin: 'auto',
-  },
-  input: {
-    width: '100%',
-    padding: '8px',
-    boxSizing: 'border-box',
-    marginBottom: '10px',
-  },
-  button: {
-    backgroundColor: '#4CAF50',
-    color: 'white',
-    padding: '10px 15px',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-  },
-};
-
+ 
   return (
-    <div style={styles.container}>
+    <div>
       <h1>Login</h1>
-      <form onSubmit={login} style={styles.form}>
+      <form onSubmit={login}>
         <label>
-          Username: <input type="text" name="username" required style={styles.input}/> 
+          Username: <input type="text" name="username" required/> 
         </label>
         <br />
         <label>
-          Password: <input type="password" name="password" required style={styles.input}/>
+          Password: <input type="password" name="password" required />
         </label>
         <br />
-        <button type="submit" style={styles.button}>
+        <button type="submit">
           Login
         </button>
       </form>
