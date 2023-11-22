@@ -5,6 +5,7 @@ offering robust login and registration functionalities
 
 Login: Users can securely log in to the system using their registered ser name and password.
 Register: New users can create an account by providing their first name, user name and a secure password.
+Token-Based Authentication: JWT (JSON Web Tokens): The application utilizes JWT to securely authenticate users and manage sessions.
 
 Frontend:
 React.js
@@ -14,6 +15,7 @@ Axios for handling API requests
 Backend (Node.js API):
 Node.js
 Express.js for building RESTful APIs
+JWT for token-based authentication
 
 How to Run:
 
